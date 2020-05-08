@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Rock Paper Scissors!</title>
+        <meta charset= "UTF-8"/>
+
+    </head>
+    <body>
+        <h1> Play some rock paper scissors in the console. Have a blaaaaaast!</h1>
+        <script>
+            // We putting the JavaScript in herrrrrr!
+            function computerPlay() {
+                let choice = Math.floor(Math.random() * 3)
+                switch (choice) {
+                    case 0:
+                        return 'Rock'
+                    case 1: 
+                        return 'Paper'
+                    case 2: 
+                        return 'Scissors'
+                }
+            }
+            function singleRound(playerSelection, computerSelection) {
+                lowered = playerSelection.toLowerCase()
+                if (lowered == 'rock' && computerSelection == 'Rock') {
+                    return 'tie'
+                } else if (lowered == 'rock' && computerSelection == 'Paper') {
+                    return 'lose'
+                } else if (lowered == 'rock' && computerSelection == 'Scissors') {
+                    return 'win' 
+                } else if (lowered == 'paper' && computerSelection == 'Rock') {
+                    return 'win'
+                } else if (lowered == 'paper' && computerSelection == 'Paper') {
+                    return 'tie'
+                } else if (lowered == 'paper' && computerSelection == 'Scissors') {
+                    return 'lose'
+                } else if (lowered == 'scissors' && computerSelection == 'Rock') {
+                    return 'lose'
+                } else if (lowered == 'scissors' && computerSelection == 'Paper') {
+                    return 'win'
+                } else if (lowered == 'scissors' && computerSelection == 'Scissors') {
+                    return 'tie'
+                } else {
+                    return "You didn't put in a rock paper or scissors!"
+                }   
+            }
+
+            function game() {
+                let playerScore = 0;
+                let computerScore = 0; 
+                let playerChoice;
+                for (i=0 ; i<5; i++) {
+                    let computerSelection = computerPlay()
+                    let playerChoice = prompt('enter rock paper or scissors', '')
+                    let result = singleRound(playerChoice,computerSelection)
+                    if (result == 'win') {
+                        playerScore++
+                        alert(`you won, ${playerChoice} beats ${computerSelection}`)
+                    }
+                    else if (result == 'lose') {
+                        computerScore++
+                        alert(`you lost, ${playerChoice} loses to ${computerSelection}`)
+                    } else { 
+                        alert(`its a tie, you both chose ${playerChoice}`)
+                    }
+                }
+                if (playerScore > computerScore) {
+                    alert(`you won with a score of ${playerScore} and the computer had ${computerScore}`)     
+                } else if (computerScore > playerScore) {
+                    alert(`You lost! The computer scored ${computerScore} and you only had ${playerScore}`)
+                }
+                else {
+                    alert('It was a tie')
+                }
+
+
+
+
+            }
+
+            
+        </script>
+    </body>
+</html>
